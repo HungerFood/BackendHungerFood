@@ -22,7 +22,7 @@ public class UserController {
     private DTOConverter dtoConverter;
 
     //registrar usuario
-    @PreAuthorize("hasAuthority('DONANTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/user")
     public ResponseEntity<UserDTO> insert(@Valid @RequestBody UserDTO userDTO) {
         User user = dtoConverter.convertToEntity(userDTO, User.class);

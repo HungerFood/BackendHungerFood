@@ -39,7 +39,7 @@ public class FoodDonationController {
     }
 
     @GetMapping("/FoodDonation/findAll") //localhost:8080/api/FoodDonation/findAll
-    //@PreAuthorize("hasAuthority('DONANTE') or hasAnyAuthority('ADMIN')") //only admin can see all
+    @PreAuthorize("hasAuthority('DONANTE') or hasAnyAuthority('ADMIN')") //only admin can see all
     public ResponseEntity<?> findAll() {
         try {
             return new ResponseEntity<>(iFoodDonationService.findall(), HttpStatus.OK);
@@ -50,7 +50,7 @@ public class FoodDonationController {
     }
 
     @PutMapping("/FoodDonation/update") //localhost:8080/api/FoodDonation/update
-    //@PreAuthorize("hasAuthority('DONANTE')") //only admin can update
+    @PreAuthorize("hasAuthority('DONANTE')") //only admin can update
     public ResponseEntity<?> update(@RequestBody FoodDonationDTO foodDonationDTO) {
         try {
             ModelMapper modelMapper = new ModelMapper();
@@ -65,7 +65,7 @@ public class FoodDonationController {
     }
 
     @DeleteMapping("/FoodDonation/delete/{id}") //localhost:8080/api/FoodDonation/delete/1
-    //@PreAuthorize("hasAuthority('DONANTE')") //only admin can delete
+    @PreAuthorize("hasAuthority('DONANTE')") //only admin can delete
     public ResponseEntity<?> delete(@PathVariable Long id) {
         try {
             iFoodDonationService.delete(id);
@@ -78,7 +78,7 @@ public class FoodDonationController {
 
     //listar por id
     @GetMapping("/FoodDonation/findById/{id}") //localhost:8080/api/FoodDonation/findById/1
-    //@PreAuthorize("hasAuthority('DONANTE') or hasAnyAuthority('ADMIN')") //only admin can see all
+    @PreAuthorize("hasAuthority('DONANTE') or hasAnyAuthority('ADMIN')") //only admin can see all
     public ResponseEntity<?> findById(@PathVariable Long id) {
         try {
             return new ResponseEntity<>(iFoodDonationService.findById(id), HttpStatus.OK);

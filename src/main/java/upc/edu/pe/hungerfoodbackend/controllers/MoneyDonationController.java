@@ -24,7 +24,7 @@ public class MoneyDonationController {
     private IUserService iUserService;
 
     @PostMapping("/MoneyDonation/save") //localhost:8080/api/MoneyDonation/save
-    //@PreAuthorize("hasAuthority('DONANTE')") //only DONANTE can save
+    @PreAuthorize("hasAuthority('DONANTE')") //only DONANTE can save
     public ResponseEntity<?> save(@RequestBody MoneyDonationDTO moneyDonationDTO) {
         try{
             ModelMapper modelMapper = new ModelMapper();
@@ -40,7 +40,7 @@ public class MoneyDonationController {
     }
 
     @GetMapping("/MoneyDonation/findAll") //localhost:8080/api/MoneyDonation/findAll
-    //@PreAuthorize("hasAuthority('DONANTE') or hasAnyAuthority('ADMIN')" ) //only admin can see all
+    @PreAuthorize("hasAuthority('DONANTE') or hasAnyAuthority('ADMIN')" ) //only admin can see all
     public ResponseEntity<?> findAll() {
         try{
             return new ResponseEntity<>(iMoneyDonationService1.findAll(), HttpStatus.OK);
@@ -52,7 +52,7 @@ public class MoneyDonationController {
     }
 
     @PutMapping("/MoneyDonation/update") //localhost:8080/api/MOneyDonation/update
-    //@PreAuthorize("hasAuthority('DONANTE')") //only admin can update
+    @PreAuthorize("hasAuthority('DONANTE')") //only admin can update
     public ResponseEntity<?> update(@RequestBody MoneyDonationDTO moneyDonationDTO) {
         try{
             ModelMapper modelMapper = new ModelMapper();
@@ -68,7 +68,7 @@ public class MoneyDonationController {
     }
 
     @DeleteMapping("/MoneyDonation/delete/{id}") //localhost:8080/api/MoneyDonation/delete/1
-    //@PreAuthorize("hasAuthority('DONANTE')") //only admin can delete
+    @PreAuthorize("hasAuthority('DONANTE')") //only admin can delete
     public ResponseEntity<?> delete(@PathVariable Long id) {
         try{
             iMoneyDonationService1.delete(id);
@@ -82,7 +82,7 @@ public class MoneyDonationController {
 
     //listar por id
     @GetMapping("/MoneyDonation/findById/{id}") //localhost:8080/api/MoneyDonation/findById/1
-    //@PreAuthorize("hasAuthority('DONANTE') or hasAnyAuthority('ADMIN')") //only admin can see all
+    @PreAuthorize("hasAuthority('DONANTE') or hasAnyAuthority('ADMIN')") //only admin can see all
     public ResponseEntity<?> findById(@PathVariable Long id) {
         try{
             return new ResponseEntity<>(iMoneyDonationService1.findById(id), HttpStatus.OK);

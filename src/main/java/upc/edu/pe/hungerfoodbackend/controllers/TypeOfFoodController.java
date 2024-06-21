@@ -67,7 +67,7 @@ public class TypeOfFoodController {
     }
 
     @GetMapping("/TypeOfFood/findAll") // http://localhost:8080/api/TypeOfFood/findAll
-    @PreAuthorize("hasAuthority('ADMIN')") //only admin can find all
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('DONANTE')" ) //only admin and donante can find all
     public ResponseEntity<?> findAll() {
         try{
             return new ResponseEntity<>(iTypeOfFoodService.findAll(), HttpStatus.OK);
