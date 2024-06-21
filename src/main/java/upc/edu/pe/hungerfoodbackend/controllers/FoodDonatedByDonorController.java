@@ -26,7 +26,7 @@ public class FoodDonatedByDonorController {
     private IFoodDonatedByDonorService iFoodDonatedByDonorService;
 
     @Autowired
-private IUserService iUserService;
+    private IUserService iUserService;
 
     //save donor food
     @PostMapping("/FoodDonatedByDonor/save") //localhost:8080/api/FoodDonatedByDonor/save

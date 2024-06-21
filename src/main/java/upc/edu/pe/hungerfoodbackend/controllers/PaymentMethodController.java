@@ -36,7 +36,7 @@ public class PaymentMethodController {
     }
 
     @GetMapping("/PaymentMethod/findAll")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('DONANTE')") //only admin and donante
+    @PreAuthorize("hasAuthority('ADMIN')") //only admin
     public ResponseEntity<?> findAll() {
         try{
             return new ResponseEntity<>(iPaymentMethodService.findAll(), HttpStatus.OK);
